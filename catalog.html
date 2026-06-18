@@ -6,7 +6,6 @@
   <title>Motorcycle Catalog — Luckwell CO., LTD</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --navy: #1A1A2E;
       --navy-mid: #16213E;
@@ -18,25 +17,13 @@
       --gray-text: #555;
       --font: 'Segoe UI', Arial, sans-serif;
     }
-
-    body {
-      font-family: var(--font);
-      background: var(--gray-light);
-      color: var(--navy);
-      min-height: 100vh;
-    }
+    body { font-family: var(--font); background: var(--gray-light); color: var(--navy); min-height: 100vh; }
 
     /* NAV */
     nav {
-      background: var(--navy);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 32px;
-      height: 64px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      background: var(--navy); display: flex; align-items: center;
+      justify-content: space-between; padding: 0 32px; height: 64px;
+      position: sticky; top: 0; z-index: 100;
       box-shadow: 0 2px 12px rgba(0,0,0,0.3);
     }
     .nav-brand { color: var(--orange); font-weight: 700; font-size: 1.1rem; text-decoration: none; }
@@ -44,269 +31,156 @@
     .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
     .nav-links a:hover { color: var(--white); }
     .nav-cart-btn {
-      background: var(--orange);
-      color: var(--white);
-      border: none;
-      border-radius: 24px;
-      padding: 8px 20px;
-      font-weight: 600;
-      cursor: pointer;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      background: var(--orange); color: var(--white); border: none;
+      border-radius: 24px; padding: 8px 20px; font-weight: 600;
+      cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;
       transition: background 0.2s;
     }
     .nav-cart-btn:hover { background: var(--orange-hover); }
     .cart-badge {
-      background: var(--white);
-      color: var(--orange);
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      font-weight: 700;
+      background: var(--white); color: var(--orange);
+      border-radius: 50%; width: 20px; height: 20px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700;
     }
 
-    /* HERO BAR */
-    .hero-bar {
-      background: var(--navy-mid);
-      color: var(--white);
-      text-align: center;
-      padding: 40px 20px 32px;
-    }
+    /* HERO */
+    .hero-bar { background: var(--navy-mid); color: var(--white); text-align: center; padding: 40px 20px 32px; }
     .hero-bar h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
     .hero-bar p { color: rgba(255,255,255,0.7); font-size: 1rem; }
     .hero-bar .tag {
-      display: inline-block;
-      background: var(--orange);
-      color: var(--white);
-      border-radius: 4px;
-      padding: 4px 12px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-top: 12px;
-      letter-spacing: 0.04em;
+      display: inline-block; background: var(--orange); color: var(--white);
+      border-radius: 4px; padding: 4px 12px; font-size: 0.8rem;
+      font-weight: 600; margin-top: 12px; letter-spacing: 0.04em;
     }
 
-    /* CATALOG GRID */
+    /* FILTER BAR */
+    .filter-bar {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      padding: 20px 24px 0; max-width: 1200px; margin: 0 auto;
+    }
+    .filter-btn {
+      padding: 6px 18px; border-radius: 20px; border: 2px solid var(--gray-mid);
+      background: var(--white); color: var(--gray-text); font-size: 0.82rem;
+      font-weight: 600; cursor: pointer; transition: all 0.15s;
+    }
+    .filter-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .filter-btn:hover:not(.active) { border-color: var(--navy); color: var(--navy); }
+
+    /* LAYOUT */
     .catalog-wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 24px;
-      display: flex;
-      gap: 32px;
-      align-items: flex-start;
+      max-width: 1200px; margin: 0 auto; padding: 24px 24px 60px;
+      display: flex; gap: 32px; align-items: flex-start;
     }
     .catalog-grid {
-      flex: 1;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 24px;
+      flex: 1; display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px;
     }
 
     /* PRODUCT CARD */
     .product-card {
-      background: var(--white);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      transition: transform 0.2s, box-shadow 0.2s;
+      background: var(--white); border-radius: 12px; overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s;
     }
     .product-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.13); }
     .product-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-      background: #ddd;
+      width: 100%; height: 190px; object-fit: cover; display: block;
     }
-    .product-body { padding: 16px; }
+    .product-placeholder {
+      width: 100%; height: 190px;
+      background: linear-gradient(135deg, #1A1A2E 0%, #0a0d1a 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+    }
+    .product-placeholder svg { opacity: 0.35; }
+    .product-placeholder span { font-size: 0.72rem; color: rgba(255,255,255,0.35); letter-spacing: 0.05em; }
+    .product-body { padding: 14px 16px; }
     .product-brand {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 4px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 3px;
     }
-    .product-name { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
-    .product-spec { font-size: 0.8rem; color: var(--gray-text); margin-bottom: 14px; }
-    .qty-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
+    .product-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
+    .product-spec { font-size: 0.76rem; color: var(--gray-text); margin-bottom: 12px; }
+
+    /* QTY */
+    .qty-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .qty-label { font-size: 0.76rem; color: var(--gray-text); flex-shrink: 0; }
+    .qty-controls {
+      display: flex; align-items: center;
+      border: 1.5px solid var(--gray-mid); border-radius: 8px; overflow: hidden;
     }
-    .qty-label { font-size: 0.78rem; color: var(--gray-text); flex-shrink: 0; }
-    .qty-controls { display: flex; align-items: center; border: 1.5px solid var(--gray-mid); border-radius: 8px; overflow: hidden; }
     .qty-btn {
-      width: 32px;
-      height: 32px;
-      border: none;
-      background: var(--gray-light);
-      cursor: pointer;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--navy);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.15s;
+      width: 30px; height: 30px; border: none; background: var(--gray-light);
+      cursor: pointer; font-size: 1rem; font-weight: 700; color: var(--navy);
+      display: flex; align-items: center; justify-content: center; transition: background 0.15s;
+      flex-shrink: 0;
     }
     .qty-btn:hover { background: var(--gray-mid); }
     .qty-input {
-      width: 44px;
-      text-align: center;
-      border: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      padding: 0;
-      outline: none;
-      color: var(--navy);
+      width: 52px; text-align: center; border: none;
+      font-size: 0.9rem; font-weight: 600; padding: 0 4px; outline: none; color: var(--navy);
+      height: 30px;
     }
     .add-btn {
-      width: 100%;
-      background: var(--orange);
-      color: var(--white);
-      border: none;
-      border-radius: 8px;
-      padding: 10px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: background 0.2s;
+      width: 100%; background: var(--orange); color: var(--white);
+      border: none; border-radius: 8px; padding: 9px;
+      font-weight: 600; font-size: 0.88rem; cursor: pointer; transition: background 0.2s;
     }
     .add-btn:hover { background: var(--orange-hover); }
     .add-btn.added { background: #2e7d32; }
 
     /* CART SIDEBAR */
     .cart-sidebar {
-      width: 300px;
-      flex-shrink: 0;
-      background: var(--white);
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 80px;
-      overflow: hidden;
+      width: 290px; flex-shrink: 0; background: var(--white);
+      border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      position: sticky; top: 80px; overflow: hidden;
     }
     .cart-header {
-      background: var(--navy);
-      color: var(--white);
-      padding: 16px 20px;
-      font-weight: 700;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      background: var(--navy); color: var(--white);
+      padding: 14px 18px; font-weight: 700; font-size: 0.95rem;
     }
-    .cart-body { padding: 16px 20px; max-height: 420px; overflow-y: auto; }
-    .cart-empty { color: var(--gray-text); font-size: 0.88rem; text-align: center; padding: 24px 0; }
+    .cart-body { padding: 12px 16px; max-height: 380px; overflow-y: auto; }
+    .cart-empty { color: var(--gray-text); font-size: 0.85rem; text-align: center; padding: 20px 0; }
     .cart-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--gray-mid);
-      gap: 8px;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: 8px 0; border-bottom: 1px solid var(--gray-mid); gap: 6px;
     }
     .cart-item:last-child { border-bottom: none; }
-    .cart-item-name { font-size: 0.85rem; font-weight: 600; }
-    .cart-item-qty { font-size: 0.8rem; color: var(--gray-text); margin-top: 2px; }
-    .cart-item-remove {
-      border: none;
-      background: none;
-      cursor: pointer;
-      color: #c00;
-      font-size: 1rem;
-      flex-shrink: 0;
-      padding: 0;
-      line-height: 1;
-    }
-    .cart-total {
-      padding: 12px 20px;
-      border-top: 2px solid var(--gray-mid);
-      font-size: 0.85rem;
-      color: var(--gray-text);
-    }
+    .cart-item-name { font-size: 0.82rem; font-weight: 600; }
+    .cart-item-qty { font-size: 0.76rem; color: var(--gray-text); margin-top: 2px; }
+    .cart-item-remove { border: none; background: none; cursor: pointer; color: #c00; font-size: 0.95rem; flex-shrink: 0; }
+    .cart-total { padding: 10px 16px; border-top: 2px solid var(--gray-mid); font-size: 0.82rem; color: var(--gray-text); }
     .cart-total strong { color: var(--navy); }
-    .cart-footer { padding: 16px 20px; border-top: 1px solid var(--gray-mid); }
+    .cart-footer { padding: 14px 16px; border-top: 1px solid var(--gray-mid); }
     .wa-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      background: #25D366;
-      color: var(--white);
-      border: none;
-      border-radius: 10px;
-      padding: 14px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; background: #25D366; color: var(--white);
+      border: none; border-radius: 10px; padding: 13px; font-weight: 700;
+      font-size: 0.92rem; cursor: pointer; text-decoration: none; transition: background 0.2s;
     }
     .wa-btn:hover { background: #1ebe5b; }
-    .wa-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
-    .wa-btn-disabled {
-      background: var(--gray-mid);
-      color: var(--gray-text);
-      cursor: default;
-    }
+    .wa-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .wa-btn-disabled { background: var(--gray-mid); color: var(--gray-text); cursor: default; }
     .wa-btn-disabled:hover { background: var(--gray-mid); }
-    .moq-note {
-      font-size: 0.75rem;
-      color: var(--gray-text);
-      text-align: center;
-      margin-top: 10px;
-    }
+    .moq-note { font-size: 0.73rem; color: var(--gray-text); text-align: center; margin-top: 8px; }
     .moq-note.warn { color: #d84315; }
+    .moq-note.ok { color: #2e7d32; }
 
-    /* MOBILE CART TOGGLE */
+    /* MOBILE FLOAT */
     .cart-float {
-      display: none;
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: var(--orange);
-      color: var(--white);
-      border: none;
-      border-radius: 50px;
-      padding: 14px 20px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-      z-index: 200;
-      align-items: center;
-      gap: 8px;
+      display: none; position: fixed; bottom: 24px; right: 24px;
+      background: var(--orange); color: var(--white); border: none;
+      border-radius: 50px; padding: 13px 20px; font-size: 0.92rem;
+      font-weight: 700; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      z-index: 200; align-items: center; gap: 8px;
     }
     .cart-drawer {
-      display: none;
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      background: var(--white);
-      border-radius: 16px 16px 0 0;
-      box-shadow: 0 -4px 24px rgba(0,0,0,0.2);
-      z-index: 300;
-      max-height: 80vh;
-      overflow-y: auto;
-      padding-bottom: 16px;
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--white); border-radius: 16px 16px 0 0;
+      box-shadow: 0 -4px 24px rgba(0,0,0,0.2); z-index: 300;
+      max-height: 80vh; overflow-y: auto; padding-bottom: 16px;
     }
-    .drawer-handle {
-      width: 40px; height: 4px;
-      background: var(--gray-mid);
-      border-radius: 2px;
-      margin: 12px auto 0;
-    }
+    .drawer-handle { width: 40px; height: 4px; background: var(--gray-mid); border-radius: 2px; margin: 12px auto 0; }
 
-    /* RESPONSIVE */
     @media (max-width: 860px) {
       .catalog-wrapper { flex-direction: column; }
       .cart-sidebar { display: none; }
@@ -317,14 +191,10 @@
       .catalog-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
       .hero-bar h1 { font-size: 1.5rem; }
     }
-    @media (max-width: 360px) {
-      .catalog-grid { grid-template-columns: 1fr; }
-    }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a class="nav-brand" href="index.html">Luckwell CO., LTD</a>
   <div class="nav-links">
@@ -337,26 +207,24 @@
   </button>
 </nav>
 
-<!-- HERO BAR -->
 <div class="hero-bar">
   <h1>Motorcycle Catalog</h1>
-  <p>Select models and quantities to send a WhatsApp inquiry</p>
+  <p>Select models and quantities, then send a WhatsApp inquiry</p>
   <span class="tag">Export Only · MOQ 125 units / 40HQ Container · Kaohsiung, Taiwan</span>
 </div>
 
-<!-- CATALOG + CART -->
+<div class="filter-bar" id="filter-bar">
+  <button class="filter-btn active" onclick="filterBrand('all', this)">All</button>
+  <button class="filter-btn" onclick="filterBrand('KYMCO', this)">KYMCO</button>
+  <button class="filter-btn" onclick="filterBrand('Yamaha', this)">Yamaha</button>
+  <button class="filter-btn" onclick="filterBrand('SYM', this)">SYM</button>
+</div>
+
 <div class="catalog-wrapper">
+  <div class="catalog-grid" id="catalog-grid"></div>
 
-  <!-- PRODUCT GRID -->
-  <div class="catalog-grid" id="catalog-grid">
-    <!-- generated by JS -->
-  </div>
-
-  <!-- CART SIDEBAR (desktop) -->
   <div class="cart-sidebar" id="cart-sidebar">
-    <div class="cart-header">
-      🛒 Inquiry List
-    </div>
+    <div class="cart-header">🛒 Inquiry List</div>
     <div class="cart-body" id="cart-body">
       <div class="cart-empty">No items yet.<br>Add motorcycles above.</div>
     </div>
@@ -368,72 +236,98 @@
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a13 13 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
         Send WhatsApp Inquiry
       </a>
-      <p class="moq-note" id="moq-note">Add items to send inquiry</p>
+      <p class="moq-note" id="moq-note">Add 50+ units to send inquiry</p>
     </div>
   </div>
-
 </div>
 
-<!-- MOBILE CART FLOAT BUTTON -->
+<!-- MOBILE FLOAT -->
 <button class="cart-float" id="cart-float" onclick="openDrawer()">
   🛒 View Cart <span class="cart-badge" style="background:var(--navy);color:var(--orange)" id="float-badge">0</span>
 </button>
 
-<!-- MOBILE CART DRAWER -->
 <div class="cart-drawer" id="cart-drawer">
   <div class="drawer-handle"></div>
-  <div style="padding:16px 20px 8px; display:flex; align-items:center; justify-content:space-between;">
-    <strong style="font-size:1.05rem;">🛒 Inquiry List</strong>
-    <button onclick="closeDrawer()" style="border:none;background:none;cursor:pointer;font-size:1.2rem;color:var(--gray-text);">✕</button>
+  <div style="padding:14px 20px 6px;display:flex;align-items:center;justify-content:space-between;">
+    <strong>🛒 Inquiry List</strong>
+    <button onclick="closeDrawer()" style="border:none;background:none;cursor:pointer;font-size:1.2rem;color:var(--gray-text)">✕</button>
   </div>
   <div style="padding:0 20px;" id="drawer-body"></div>
-  <div style="padding:12px 20px; color:var(--gray-text); font-size:0.85rem;" id="drawer-total" style="display:none">
-    Total: <strong id="drawer-total-units">0</strong> units
-  </div>
-  <div style="padding:16px 20px;">
+  <div style="padding:10px 20px;color:var(--gray-text);font-size:0.82rem;" id="drawer-total"></div>
+  <div style="padding:14px 20px;">
     <a class="wa-btn wa-btn-disabled" id="wa-btn-mobile" href="#" target="_blank" onclick="return false;">
-      <svg viewBox="0 0 24 24" fill="currentColor" style="width:22px;height:22px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a13 13 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a13 13 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
       Send WhatsApp Inquiry
     </a>
-    <p class="moq-note" id="moq-note-mobile" style="text-align:center;margin-top:10px;font-size:0.75rem;color:var(--gray-text)">Add items to send inquiry</p>
+    <p class="moq-note" id="moq-note-mobile" style="text-align:center;margin-top:8px;">Add 50+ units to send inquiry</p>
   </div>
 </div>
 
 <script>
-const WA_NUMBER = '886975137554';
+const WA = '886975137554';
+const INQUIRY_MIN = 50;
+
+const MOTO_ICON = `<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="15" cy="46" r="9" stroke="white" stroke-width="2.5" fill="none"/>
+  <circle cx="49" cy="46" r="9" stroke="white" stroke-width="2.5" fill="none"/>
+  <path d="M24 46 L40 46" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M15 37 L24 24 L36 24 L44 37" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M36 24 L44 18 L52 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M24 24 L20 37" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="49" cy="20" r="4" stroke="white" stroke-width="2" fill="none"/>
+</svg>`;
 
 const PRODUCTS = [
-  { id:'racing-150', brand:'KYMCO', name:'Racing 150', spec:'150cc · CVT · 4-stroke FI', img:'photos/racing-150.jpg' },
-  { id:'g5',         brand:'KYMCO', name:'G5 125cc',  spec:'125cc · CVT · EFI', img:'photos/g5.png' },
-  { id:'gp',         brand:'KYMCO', name:'GP 125cc',  spec:'125cc · CVT · Carb/EFI', img:'photos/gp.jpg' },
-  { id:'v2',         brand:'KYMCO', name:'V2 125cc',  spec:'125cc · CVT · Carb', img:'photos/v2.jpg' },
-  { id:'vjr',        brand:'KYMCO', name:'VJR 125cc', spec:'125cc · CVT · Carb', img:'photos/vjr.png' },
-  { id:'jr',         brand:'KYMCO', name:'JR 125cc',  spec:'125cc · CVT · Carb', img:'photos/jr.jpg' },
-  { id:'cygnus',     brand:'Yamaha', name:'Cygnus 125cc', spec:'125cc · CVT · FI', img:'photos/cygnus.png' },
-  { id:'rsz',        brand:'Yamaha', name:'RSZ 115cc',    spec:'115cc · CVT · Carb', img:'photos/rsz.jpg' },
-  { id:'bws',        brand:'Yamaha', name:'BWS 125cc',    spec:'125cc · CVT · Carb', img:'photos/bws.png' },
-  { id:'gt150',      brand:'SYM',    name:'GT 150cc',     spec:'150cc · CVT · EFI', img:'photos/gt150.jpg' },
-  { id:'fighter125', brand:'SYM',    name:'Fighter 125cc',spec:'125cc · CVT · Carb', img:'photos/fighter-125.png' },
-  { id:'gt125',      brand:'SYM',    name:'GT 125cc',     spec:'125cc · CVT · EFI', img:'photos/gt125.png' },
+  // KYMCO
+  { id:'racing-150',  brand:'KYMCO', name:'Racing 150',      cc:'150cc', spec:'CVT · 4-stroke · FI',        img:'photos/racing-150.jpg' },
+  { id:'g5',          brand:'KYMCO', name:'G5 125cc',         cc:'125cc', spec:'CVT · EFI · Disc Brake',      img:'photos/g5.png' },
+  { id:'g6',          brand:'KYMCO', name:'G6 125cc / 150cc', cc:'125/150cc', spec:'CVT · EFI · VVCS · Full LED', img:null },
+  { id:'gp',          brand:'KYMCO', name:'GP 125cc',         cc:'125cc', spec:'CVT · Carb/EFI',              img:'photos/gp.jpg' },
+  { id:'gp2',         brand:'KYMCO', name:'GP2 125cc',        cc:'125cc', spec:'CVT · EFI · Front Disc',      img:'photos/gp2.png' },
+  { id:'many',        brand:'KYMCO', name:'Many 125cc',       cc:'125cc', spec:'CVT · Carb · Step-through',   img:null },
+  { id:'megafi',      brand:'KYMCO', name:'Megafi 125cc',     cc:'125cc', spec:'CVT · EFI · Step-through',    img:null },
+  { id:'new-many',    brand:'KYMCO', name:'New Many 110cc',   cc:'110cc', spec:'CVT · EFI · Step-through',    img:null },
+  { id:'racing-s',    brand:'KYMCO', name:'Racing S 150cc',   cc:'150cc', spec:'CVT · EFI · Sport Fairing',   img:'photos/racing-s.jpg' },
+  { id:'racing-king', brand:'KYMCO', name:'Racing King 180cc',cc:'180cc', spec:'CVT · EFI · Full Fairing',    img:null },
+  { id:'v2',          brand:'KYMCO', name:'V2 125cc',         cc:'125cc', spec:'CVT · Carb',                  img:'photos/v2.jpg' },
+  { id:'vjr',         brand:'KYMCO', name:'VJR 125cc',        cc:'125cc', spec:'CVT · Carb · Step-through',   img:'photos/vjr.png' },
+  { id:'jr',          brand:'KYMCO', name:'JR 125cc',         cc:'125cc', spec:'CVT · Carb · Lightweight',    img:'photos/jr.jpg' },
+  // Yamaha
+  { id:'cygnus',      brand:'Yamaha', name:'Cygnus 125cc',    cc:'125cc', spec:'CVT · FI · Disc Brake',       img:'photos/cygnus.png' },
+  { id:'rsz',         brand:'Yamaha', name:'RSZ 115cc',       cc:'115cc', spec:'CVT · Carb',                  img:'photos/rsz.jpg' },
+  { id:'bws',         brand:'Yamaha', name:'BWS 125cc',       cc:'125cc', spec:'CVT · Carb · Wide Tyre',      img:'photos/bws.png' },
+  { id:'gtr-aero',    brand:'Yamaha', name:'GTR Aero 125cc',  cc:'125cc', spec:'CVT · FI · Full Fairing',     img:'photos/gtr-aero.jpg' },
+  // SYM
+  { id:'gt150',       brand:'SYM',    name:'GT 150cc',        cc:'150cc', spec:'CVT · EFI · Sport Style',     img:'photos/gt150.jpg' },
+  { id:'fighter125',  brand:'SYM',    name:'Fighter 125cc',   cc:'125cc', spec:'CVT · Carb · Naked Sport',    img:'photos/fighter-125.png' },
+  { id:'gt125',       brand:'SYM',    name:'GT 125cc',        cc:'125cc', spec:'CVT · EFI',                   img:'photos/gt125.png' },
 ];
 
-let cart = {}; // { id: { product, qty } }
+let cart = {};
+let currentFilter = 'all';
+
+function placeholder() {
+  return `<div class="product-placeholder">${MOTO_ICON}<span>PHOTO COMING SOON</span></div>`;
+}
 
 function renderGrid() {
   const grid = document.getElementById('catalog-grid');
-  grid.innerHTML = PRODUCTS.map(p => `
-    <div class="product-card" id="card-${p.id}">
-      <img class="product-img" src="${p.img}" alt="${p.brand} ${p.name}" loading="lazy" onerror="this.style.background='#ddd';this.alt='Photo unavailable'">
+  const items = currentFilter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.brand === currentFilter);
+  grid.innerHTML = items.map(p => `
+    <div class="product-card">
+      ${p.img
+        ? `<img class="product-img" src="${p.img}" alt="${p.brand} ${p.name}" loading="lazy" onerror="this.outerHTML='${placeholder().replace(/"/g,"'")}'">`
+        : placeholder()}
       <div class="product-body">
         <div class="product-brand">${p.brand}</div>
         <div class="product-name">${p.name}</div>
-        <div class="product-spec">${p.spec}</div>
+        <div class="product-spec">${p.cc} · ${p.spec}</div>
         <div class="qty-row">
           <span class="qty-label">Qty:</span>
           <div class="qty-controls">
-            <button class="qty-btn" onclick="changeQty('${p.id}', -10)">−</button>
-            <input class="qty-input" type="number" id="qty-${p.id}" value="0" min="0" max="9999" onchange="syncQty('${p.id}')">
-            <button class="qty-btn" onclick="changeQty('${p.id}', 10)">+</button>
+            <button class="qty-btn" onclick="changeQty('${p.id}',-1)">−</button>
+            <input class="qty-input" type="number" id="qty-${p.id}" value="${cart[p.id]?.qty||0}" min="0" max="9999" onchange="clampQty('${p.id}')">
+            <button class="qty-btn" onclick="changeQty('${p.id}',1)">+</button>
           </div>
         </div>
         <button class="add-btn" id="btn-${p.id}" onclick="addToCart('${p.id}')">Add to Inquiry</button>
@@ -442,150 +336,119 @@ function renderGrid() {
   `).join('');
 }
 
-function changeQty(id, delta) {
-  const input = document.getElementById('qty-' + id);
-  let val = parseInt(input.value) || 0;
-  val = Math.max(0, val + delta);
-  input.value = val;
+function filterBrand(brand, el) {
+  currentFilter = brand;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  renderGrid();
 }
 
-function syncQty(id) {
-  const input = document.getElementById('qty-' + id);
-  let val = parseInt(input.value) || 0;
-  if (val < 0) val = 0;
-  input.value = val;
+function changeQty(id, delta) {
+  const inp = document.getElementById('qty-' + id);
+  if (!inp) return;
+  inp.value = Math.max(0, (parseInt(inp.value)||0) + delta);
+}
+
+function clampQty(id) {
+  const inp = document.getElementById('qty-' + id);
+  if (!inp) return;
+  let v = parseInt(inp.value)||0;
+  if (v < 0) v = 0;
+  inp.value = v;
 }
 
 function addToCart(id) {
-  const qty = parseInt(document.getElementById('qty-' + id).value) || 0;
+  const inp = document.getElementById('qty-' + id);
+  const qty = inp ? parseInt(inp.value)||0 : 0;
   if (qty <= 0) {
-    // Remove from cart if qty=0
     delete cart[id];
   } else {
-    const p = PRODUCTS.find(x => x.id === id);
-    cart[id] = { product: p, qty };
+    cart[id] = { product: PRODUCTS.find(p => p.id === id), qty };
   }
-
-  // Flash button
   const btn = document.getElementById('btn-' + id);
-  if (qty > 0) {
+  if (btn && qty > 0) {
     btn.textContent = '✓ Added';
     btn.classList.add('added');
     setTimeout(() => { btn.textContent = 'Add to Inquiry'; btn.classList.remove('added'); }, 1500);
   }
-
   renderCart();
 }
 
 function removeFromCart(id) {
   delete cart[id];
-  // Reset qty input
   const inp = document.getElementById('qty-' + id);
   if (inp) inp.value = 0;
   renderCart();
 }
 
+function cartHTML(items) {
+  if (!items.length) return '<div class="cart-empty">No items yet.<br>Add motorcycles above.</div>';
+  return items.map(i => `
+    <div class="cart-item">
+      <div>
+        <div class="cart-item-name">${i.product.brand} ${i.product.name}</div>
+        <div class="cart-item-qty">${i.qty} units</div>
+      </div>
+      <button class="cart-item-remove" onclick="removeFromCart('${i.product.id}')">✕</button>
+    </div>
+  `).join('');
+}
+
 function renderCart() {
   const items = Object.values(cart);
-  const totalUnits = items.reduce((s, i) => s + i.qty, 0);
+  const total = items.reduce((s,i) => s + i.qty, 0);
   const count = items.length;
 
-  // Badges
   document.getElementById('nav-badge').textContent = count;
   document.getElementById('float-badge').textContent = count;
 
-  // Desktop sidebar
-  const body = document.getElementById('cart-body');
+  // Desktop
+  document.getElementById('cart-body').innerHTML = cartHTML(items);
   const totalEl = document.getElementById('cart-total');
-  const totalUnitsEl = document.getElementById('total-units');
-
-  if (items.length === 0) {
-    body.innerHTML = '<div class="cart-empty">No items yet.<br>Add motorcycles above.</div>';
-    totalEl.style.display = 'none';
-  } else {
-    body.innerHTML = items.map(i => `
-      <div class="cart-item">
-        <div>
-          <div class="cart-item-name">${i.product.brand} ${i.product.name}</div>
-          <div class="cart-item-qty">${i.qty} units</div>
-        </div>
-        <button class="cart-item-remove" onclick="removeFromCart('${i.product.id}')">✕</button>
-      </div>
-    `).join('');
-    totalEl.style.display = 'block';
-    totalUnitsEl.textContent = totalUnits;
-  }
+  totalEl.style.display = items.length ? 'block' : 'none';
+  document.getElementById('total-units').textContent = total;
 
   // Mobile drawer
-  const drawerBody = document.getElementById('drawer-body');
-  drawerBody.innerHTML = body.innerHTML;
-  document.getElementById('drawer-total-units').textContent = totalUnits;
+  document.getElementById('drawer-body').innerHTML = cartHTML(items);
+  document.getElementById('drawer-total').innerHTML = items.length ? `Total: <strong>${total}</strong> units` : '';
 
-  // MOQ note + WA button
-  updateWaButton(totalUnits);
+  updateWA(total, items);
 }
 
-function updateWaButton(totalUnits) {
-  const items = Object.values(cart);
-  const moqNote = document.getElementById('moq-note');
-  const moqNoteMobile = document.getElementById('moq-note-mobile');
-  const waBtn = document.getElementById('wa-btn');
-  const waBtnMobile = document.getElementById('wa-btn-mobile');
+function updateWA(total, items) {
+  const ready = total >= INQUIRY_MIN;
+  const noteD = document.getElementById('moq-note');
+  const noteM = document.getElementById('moq-note-mobile');
+  const btnD  = document.getElementById('wa-btn');
+  const btnM  = document.getElementById('wa-btn-mobile');
 
-  if (items.length === 0) {
-    [waBtn, waBtnMobile].forEach(b => {
-      b.classList.add('wa-btn-disabled');
-      b.removeAttribute('href');
-      b.setAttribute('onclick', 'return false;');
-    });
-    [moqNote, moqNoteMobile].forEach(n => {
-      n.textContent = 'Add items to send inquiry';
-      n.classList.remove('warn');
-    });
+  if (!items.length) {
+    [btnD, btnM].forEach(b => { b.classList.add('wa-btn-disabled'); b.href='#'; b.onclick=()=>false; });
+    [noteD, noteM].forEach(n => { n.textContent='Add 50+ units to send inquiry'; n.className='moq-note'; });
     return;
   }
 
   const lines = items.map(i => `- ${i.product.brand} ${i.product.name}: ${i.qty} units`).join('%0A');
-  const msg = `Hello Luckwell! I'd like to inquire about the following motorcycles:%0A%0A${lines}%0A%0ATotal: ${totalUnits} units%0A%0APlease send me your current stock list and quotation. Thank you!`;
-  const url = `https://wa.me/${WA_NUMBER}?text=${msg}`;
+  const msg = `Hello Luckwell!%0A%0AI'd like to inquire about:%0A%0A${lines}%0A%0ATotal: ${total} units%0A%0APlease send me the current stock list and quotation. Thank you!`;
+  const url  = `https://wa.me/${WA}?text=${msg}`;
 
-  [waBtn, waBtnMobile].forEach(b => {
-    b.classList.remove('wa-btn-disabled');
-    b.setAttribute('href', url);
-    b.setAttribute('target', '_blank');
-    b.removeAttribute('onclick');
-  });
-
-  if (totalUnits < 125) {
-    [moqNote, moqNoteMobile].forEach(n => {
-      n.textContent = `⚠ MOQ is 125 units (current: ${totalUnits})`;
-      n.classList.add('warn');
-    });
+  if (ready) {
+    [btnD, btnM].forEach(b => { b.classList.remove('wa-btn-disabled'); b.href=url; b.setAttribute('target','_blank'); b.onclick=null; });
+    [noteD, noteM].forEach(n => { n.textContent=`✓ ${total} units — tap to send inquiry!`; n.className='moq-note ok'; });
   } else {
-    [moqNote, moqNoteMobile].forEach(n => {
-      n.textContent = `✓ ${totalUnits} units — ready to inquire!`;
-      n.classList.remove('warn');
-    });
+    [btnD, btnM].forEach(b => { b.classList.add('wa-btn-disabled'); b.href='#'; b.onclick=()=>false; });
+    [noteD, noteM].forEach(n => { n.textContent=`Need ${INQUIRY_MIN - total} more units to unlock (min ${INQUIRY_MIN})`; n.className='moq-note warn'; });
   }
 }
 
 function scrollToCart() {
-  const sidebar = document.getElementById('cart-sidebar');
-  if (sidebar.offsetParent !== null) {
-    sidebar.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  } else {
-    openDrawer();
-  }
+  const s = document.getElementById('cart-sidebar');
+  if (s.offsetParent !== null) s.scrollIntoView({behavior:'smooth',block:'start'});
+  else openDrawer();
 }
+function openDrawer()  { document.getElementById('cart-drawer').style.display='block'; }
+function closeDrawer() { document.getElementById('cart-drawer').style.display='none'; }
 
-function openDrawer() {
-  document.getElementById('cart-drawer').style.display = 'block';
-}
-function closeDrawer() {
-  document.getElementById('cart-drawer').style.display = 'none';
-}
-
-// Init
 renderGrid();
 renderCart();
 </script>
