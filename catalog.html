@@ -214,10 +214,12 @@
 </div>
 
 <div class="filter-bar" id="filter-bar">
-  <button class="filter-btn active" onclick="filterBrand('all', this)">All</button>
-  <button class="filter-btn" onclick="filterBrand('KYMCO', this)">KYMCO</button>
-  <button class="filter-btn" onclick="filterBrand('Yamaha', this)">Yamaha</button>
-  <button class="filter-btn" onclick="filterBrand('SYM', this)">SYM</button>
+  <button class="filter-btn active" onclick="filterBrand('all', this)">All (41)</button>
+  <button class="filter-btn" onclick="filterBrand('KYMCO', this)">KYMCO (15)</button>
+  <button class="filter-btn" onclick="filterBrand('Yamaha', this)">Yamaha (17)</button>
+  <button class="filter-btn" onclick="filterBrand('SYM', this)">SYM (6)</button>
+  <button class="filter-btn" onclick="filterBrand('AEON', this)">AEON (1)</button>
+  <button class="filter-btn" onclick="filterBrand('PGO', this)">PGO (2)</button>
 </div>
 
 <div class="catalog-wrapper">
@@ -278,33 +280,52 @@ const MOTO_ICON = `<svg width="64" height="64" viewBox="0 0 64 64" fill="none" x
 </svg>`;
 
 const PRODUCTS = [
-  // KYMCO
-  { id:'racing-150',  brand:'KYMCO', name:'Racing 150',      cc:'150cc', spec:'CVT · 4-stroke · FI',        img:'photos/racing-150.jpg' },
-  { id:'g5',          brand:'KYMCO', name:'G5 125cc',         cc:'125cc', spec:'CVT · EFI · Disc Brake',      img:'photos/g5.png' },
-  { id:'g6',          brand:'KYMCO', name:'G6 125cc / 150cc',  cc:'125/150cc', spec:'CVT · EFI · VVCS · Full LED',  img:'photos/g6.jpg' },
-  { id:'gp',          brand:'KYMCO', name:'GP 125cc',         cc:'125cc', spec:'CVT · Carb/EFI',              img:'photos/gp.jpg' },
-  { id:'gp2',         brand:'KYMCO', name:'GP2 125cc',        cc:'125cc', spec:'CVT · EFI · Front Disc',      img:'photos/gp2.png' },
-  { id:'many',        brand:'KYMCO', name:'Many 125cc',        cc:'125cc',     spec:'CVT · Carb · Step-through',    img:'photos/many.jpg' },
-  { id:'megafi',      brand:'KYMCO', name:'Megafi 125cc',      cc:'125cc',     spec:'CVT · EFI · Step-through',     img:'photos/megafi.jpg' },
-  { id:'new-many',    brand:'KYMCO', name:'New Many 110cc',    cc:'110cc',     spec:'CVT · EFI · Step-through',     img:'photos/new-many.jpg' },
-  { id:'racing-s',    brand:'KYMCO', name:'Racing S 150cc',   cc:'150cc', spec:'CVT · EFI · Sport Fairing',   img:'photos/racing-s.jpg' },
-  { id:'racing-king', brand:'KYMCO', name:'Racing King 180cc', cc:'180cc',     spec:'CVT · EFI · Full Fairing',     img:'photos/racing-king.jpg' },
-  { id:'v2',          brand:'KYMCO', name:'V2 125cc',         cc:'125cc', spec:'CVT · Carb',                  img:'photos/v2.jpg' },
-  { id:'vjr',         brand:'KYMCO', name:'VJR 125cc',        cc:'125cc', spec:'CVT · Carb · Step-through',   img:'photos/vjr.png' },
-  { id:'jr',          brand:'KYMCO', name:'JR 125cc',         cc:'125cc', spec:'CVT · Carb · Lightweight',    img:'photos/jr.jpg' },
-  // Yamaha
-  { id:'cygnus-2',    brand:'Yamaha', name:'Cygnus 2 125cc',   cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus.png' },
-  { id:'cygnus-3',    brand:'Yamaha', name:'Cygnus 3 125cc',   cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus-3.jpg' },
-  { id:'cygnus-4',    brand:'Yamaha', name:'Cygnus 4 125cc',   cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus-4.jpg' },
-  { id:'cygnus-5',    brand:'Yamaha', name:'Cygnus 5 125cc',   cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus-5.jpg' },
-  { id:'cygnus-6',    brand:'Yamaha', name:'Cygnus 6 125cc',   cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus-6.jpg' },
-  { id:'rsz',         brand:'Yamaha', name:'RSZ 115cc',       cc:'115cc', spec:'CVT · Carb',                  img:'photos/rsz.jpg' },
-  { id:'bws',         brand:'Yamaha', name:'BWS 125cc',       cc:'125cc', spec:'CVT · Carb · Wide Tyre',      img:'photos/bws.png' },
-  { id:'gtr-aero',    brand:'Yamaha', name:'GTR Aero 125cc',  cc:'125cc', spec:'CVT · FI · Full Fairing',     img:'photos/gtr-aero.jpg' },
-  // SYM
-  { id:'gt150',       brand:'SYM',    name:'GT 150cc',        cc:'150cc', spec:'CVT · EFI · Sport Style',     img:'photos/gt150.jpg' },
-  { id:'fighter125',  brand:'SYM',    name:'Fighter 125cc',   cc:'125cc', spec:'CVT · Carb · Naked Sport',    img:'photos/fighter-125.png' },
-  { id:'gt125',       brand:'SYM',    name:'GT 125cc',        cc:'125cc', spec:'CVT · EFI',                   img:'photos/gt125.png' },
+  // KYMCO (15)
+  { id:'racing-150',   brand:'KYMCO',  name:'Racing 150',       cc:'150cc',     spec:'CVT · FI · 4-stroke',          img:'photos/racing-150.jpg' },
+  { id:'g4',           brand:'KYMCO',  name:'G4 125cc',          cc:'125cc',     spec:'CVT · EFI · Step-through',     img:'photos/kymco-g4.png' },
+  { id:'g5',           brand:'KYMCO',  name:'G5 125cc',          cc:'125cc',     spec:'CVT · EFI · Disc Brake',       img:'photos/g5.png' },
+  { id:'g6',           brand:'KYMCO',  name:'G6 125cc / 150cc',  cc:'125/150cc', spec:'CVT · EFI · VVCS · Full LED',  img:'photos/g6.jpg' },
+  { id:'gp',           brand:'KYMCO',  name:'GP 125cc',          cc:'125cc',     spec:'CVT · Carb/EFI',               img:'photos/gp.jpg' },
+  { id:'gp2',          brand:'KYMCO',  name:'GP2 125cc',         cc:'125cc',     spec:'CVT · EFI · Front Disc',       img:'photos/gp2.png' },
+  { id:'many',         brand:'KYMCO',  name:'Many 125cc',        cc:'125cc',     spec:'CVT · EFI · Retro Style',      img:'photos/many.jpg' },
+  { id:'megafi',       brand:'KYMCO',  name:'Megafi 125cc',      cc:'125cc',     spec:'CVT · EFI · Step-through',     img:'photos/megafi.jpg' },
+  { id:'new-many',     brand:'KYMCO',  name:'New Many 110cc',    cc:'110cc',     spec:'CVT · EFI · Step-through',     img:'photos/new-many.jpg' },
+  { id:'racing-s',     brand:'KYMCO',  name:'Racing S 150cc',    cc:'150cc',     spec:'CVT · EFI · Sport Fairing',    img:'photos/racing-s.jpg' },
+  { id:'racing-king',  brand:'KYMCO',  name:'Racing King 180cc', cc:'180cc',     spec:'CVT · EFI · Full Fairing',     img:'photos/kymco-racing-king.jpg' },
+  { id:'v2',           brand:'KYMCO',  name:'V2 125cc',          cc:'125cc',     spec:'CVT · Carb',                   img:'photos/v2.jpg' },
+  { id:'vjr',          brand:'KYMCO',  name:'VJR 125cc',         cc:'125cc',     spec:'CVT · Carb · Step-through',    img:'photos/vjr.png' },
+  { id:'jr',           brand:'KYMCO',  name:'JR 125cc',          cc:'125cc',     spec:'CVT · Carb · Lightweight',     img:'photos/jr.jpg' },
+  { id:'ktr',          brand:'KYMCO',  name:'KTR 150cc',         cc:'150cc',     spec:'Manual · Carb · Retro Classic',img:'photos/kymco-ktr.jpg' },
+  // Yamaha (17)
+  { id:'breeze',       brand:'Yamaha', name:'Breeze 100cc',      cc:'100cc',     spec:'CVT · Carb · Step-through',    img:'photos/yamaha-breeze.jpg' },
+  { id:'jog-sweet',    brand:'Yamaha', name:'Jog Sweet 100cc',   cc:'100cc',     spec:'CVT · Carb · Step-through',    img:'photos/yamaha-jog-sweet.jpg' },
+  { id:'super-four',   brand:'Yamaha', name:'Super Four 100cc',  cc:'100cc',     spec:'CVT · Carb · Step-through',    img:'photos/yamaha-super-four.jpg' },
+  { id:'vino',         brand:'Yamaha', name:'Vino 50cc',         cc:'50cc',      spec:'CVT · Carb · Retro Style',     img:'photos/yamaha-vino.jpg' },
+  { id:'cuxi',         brand:'Yamaha', name:'Cuxi 100cc',        cc:'100cc',     spec:'CVT · Carb · Retro Style',     img:'photos/yamaha-cuxi.jpg' },
+  { id:'rsz',          brand:'Yamaha', name:'RSZ 115cc',         cc:'115cc',     spec:'CVT · Carb',                   img:'photos/rsz.jpg' },
+  { id:'rs',           brand:'Yamaha', name:'RS 115cc',          cc:'115cc',     spec:'CVT · Carb · Sport Style',     img:'photos/yamaha-rs.jpg' },
+  { id:'bws',          brand:'Yamaha', name:'BWS 125cc',         cc:'125cc',     spec:'CVT · Carb · Wide Tyre',       img:'photos/bws.png' },
+  { id:'cygnus-2',     brand:'Yamaha', name:'Cygnus 2 125cc',    cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus.png' },
+  { id:'cygnus-3',     brand:'Yamaha', name:'Cygnus 3 125cc',    cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus-3.jpg' },
+  { id:'cygnus-4',     brand:'Yamaha', name:'Cygnus 4 125cc',    cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus-4.jpg' },
+  { id:'cygnus-5',     brand:'Yamaha', name:'Cygnus 5 125cc',    cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus-5.jpg' },
+  { id:'cygnus-6',     brand:'Yamaha', name:'Cygnus 6 125cc',    cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus-6.jpg' },
+  { id:'gtr',          brand:'Yamaha', name:'GTR 125cc',         cc:'125cc',     spec:'CVT · FI · Sport Style',       img:'photos/yamaha-gtr.jpg' },
+  { id:'gtr-aero',     brand:'Yamaha', name:'GTR Aero 125cc',    cc:'125cc',     spec:'CVT · FI · Full Fairing',      img:'photos/gtr-aero.jpg' },
+  { id:'force',        brand:'Yamaha', name:'Force 155cc',       cc:'155cc',     spec:'CVT · FI · VVA · Sport',       img:'photos/yamaha-force.jpg' },
+  { id:'smax',         brand:'Yamaha', name:'S MAX 155cc',       cc:'155cc',     spec:'CVT · FI · Maxi-Scooter',      img:'photos/yamaha-smax.jpg' },
+  // SYM (6)
+  { id:'sym-fighter',  brand:'SYM',   name:'Fighter 125cc',     cc:'125cc',     spec:'CVT · Carb · Naked Sport',     img:'photos/fighter-125.png' },
+  { id:'sym-gt125',    brand:'SYM',   name:'GT 125cc',          cc:'125cc',     spec:'CVT · EFI',                    img:'photos/gt125.png' },
+  { id:'sym-gt150',    brand:'SYM',   name:'GT 150cc',          cc:'150cc',     spec:'CVT · EFI · Sport Style',      img:'photos/gt150.jpg' },
+  { id:'sym-xpro',     brand:'SYM',   name:'XPRO 110cc',        cc:'110cc',     spec:'CVT · Carb · Step-through',    img:'photos/sym-xpro.png' },
+  { id:'sym-duke',     brand:'SYM',   name:'Duke 125cc',        cc:'125cc',     spec:'CVT · EFI · Sport Fairing',    img:'photos/sym-duke.jpg' },
+  { id:'sym-rx110',    brand:'SYM',   name:'RX 110cc',          cc:'110cc',     spec:'CVT · Carb · Lightweight',     img:'photos/sym-rx110.jpg' },
+  // AEON (1)
+  { id:'aeon-coin',    brand:'AEON',  name:'Coin 50cc',         cc:'50cc',      spec:'CVT · Carb · Retro Style',     img:'photos/aeon-coin.jpg' },
+  // PGO (2)
+  { id:'pgo-tigra',    brand:'PGO',   name:'Tigra 150cc',       cc:'150cc',     spec:'CVT · Carb · Sport Style',     img:'photos/pgo-tigra.jpg' },
+  { id:'pgo-jbubu',    brand:'PGO',   name:'JBUBU 125cc',       cc:'125cc',     spec:'CVT · Carb · Retro Style',     img:'photos/pgo-jbubu.jpg' },
 ];
 
 let cart = {};
