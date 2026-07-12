@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Motorcycle Catalog — Luckwell CO., LTD</title>
+  <title>Motorcycle &amp; Car Catalog — Luckwell CO., LTD</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -208,19 +208,17 @@
 </nav>
 
 <div class="hero-bar">
-  <h1>Motorcycle Catalog</h1>
+  <h1>Motorcycle &amp; Car Catalog</h1>
   <p>Select models and quantities, then send a WhatsApp inquiry</p>
-  <span class="tag">Export Only · MOQ 125 units / 40HQ Container · Kaohsiung, Taiwan</span>
+  <span class="tag">Export Only · Kaohsiung, Taiwan · MOQ 125 units/40HQ (Motorcycles) · MOQ 5 units/40HQ (Cars)</span>
 </div>
 
-<div class="filter-bar" id="filter-bar">
-  <button class="filter-btn active" onclick="filterBrand('all', this)">All (41)</button>
-  <button class="filter-btn" onclick="filterBrand('Yamaha', this)">Yamaha (17)</button>
-  <button class="filter-btn" onclick="filterBrand('KYMCO', this)">KYMCO (15)</button>
-  <button class="filter-btn" onclick="filterBrand('SYM', this)">SYM (6)</button>
-  <button class="filter-btn" onclick="filterBrand('AEON', this)">AEON (1)</button>
-  <button class="filter-btn" onclick="filterBrand('PGO', this)">PGO (2)</button>
+<div class="filter-bar" id="category-bar">
+  <button class="filter-btn active" onclick="selectCategory('moto', this)">🏍 Motorcycles (41)</button>
+  <button class="filter-btn" onclick="selectCategory('car', this)">🚗 Cars (10)</button>
 </div>
+
+<div class="filter-bar" id="filter-bar"></div>
 
 <div class="catalog-wrapper">
   <div class="catalog-grid" id="catalog-grid"></div>
@@ -228,7 +226,7 @@
   <div class="cart-sidebar" id="cart-sidebar">
     <div class="cart-header">🛒 Inquiry List</div>
     <div class="cart-body" id="cart-body">
-      <div class="cart-empty">No items yet.<br>Add motorcycles above.</div>
+      <div class="cart-empty">No items yet.<br>Add motorcycles or cars above.</div>
     </div>
     <div class="cart-total" id="cart-total" style="display:none">
       Total: <strong id="total-units">0</strong> units
@@ -238,7 +236,7 @@
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a13 13 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
         Send WhatsApp Inquiry
       </a>
-      <p class="moq-note" id="moq-note">Add 50+ units to send inquiry</p>
+      <p class="moq-note" id="moq-note">Add units to send inquiry</p>
     </div>
   </div>
 </div>
@@ -261,13 +259,12 @@
       <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a13 13 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
       Send WhatsApp Inquiry
     </a>
-    <p class="moq-note" id="moq-note-mobile" style="text-align:center;margin-top:8px;">Add 50+ units to send inquiry</p>
+    <p class="moq-note" id="moq-note-mobile" style="text-align:center;margin-top:8px;">Add units to send inquiry</p>
   </div>
 </div>
 
 <script>
 const WA = '886975137554';
-const INQUIRY_MIN = 50;
 
 const MOTO_ICON = `<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
   <circle cx="15" cy="46" r="9" stroke="white" stroke-width="2.5" fill="none"/>
@@ -279,70 +276,131 @@ const MOTO_ICON = `<svg width="64" height="64" viewBox="0 0 64 64" fill="none" x
   <circle cx="49" cy="20" r="4" stroke="white" stroke-width="2" fill="none"/>
 </svg>`;
 
+const CAR_ICON = `<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="19" cy="46" r="6" stroke="white" stroke-width="2.5" fill="none"/>
+  <circle cx="45" cy="46" r="6" stroke="white" stroke-width="2.5" fill="none"/>
+  <path d="M10 40 L13 27 Q15 22 21 22 L43 22 Q49 22 51 27 L54 40 Z" stroke="white" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+  <path d="M10 40 L54 40" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M18 22 L22 12 L42 12 L46 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>`;
+
 const PRODUCTS = [
   // Yamaha (17)
-  { id:'breeze',       brand:'Yamaha', name:'Breeze 100cc',      cc:'100cc',     spec:'CVT · Carb · Step-through',    img:'photos/yamaha-breeze.jpg' },
-  { id:'jog-sweet',    brand:'Yamaha', name:'Jog Sweet 100cc',   cc:'100cc',     spec:'CVT · Carb · Step-through',    img:'photos/yamaha-jog-sweet.jpg' },
-  { id:'super-four',   brand:'Yamaha', name:'Super Four 100cc',  cc:'100cc',     spec:'CVT · Carb · Step-through',    img:'photos/yamaha-super-four.jpg' },
-  { id:'vino',         brand:'Yamaha', name:'Vino 50cc',         cc:'50cc',      spec:'CVT · Carb · Retro Style',     img:'photos/yamaha-vino.jpg' },
-  { id:'cuxi',         brand:'Yamaha', name:'Cuxi 100cc',        cc:'100cc',     spec:'CVT · Carb · Retro Style',     img:'photos/yamaha-cuxi.jpg' },
-  { id:'rsz',          brand:'Yamaha', name:'RSZ 115cc',         cc:'115cc',     spec:'CVT · Carb',                   img:'photos/rsz.jpg' },
-  { id:'rs',           brand:'Yamaha', name:'RS 115cc',          cc:'115cc',     spec:'CVT · Carb · Sport Style',     img:'photos/yamaha-rs.jpg' },
-  { id:'bws',          brand:'Yamaha', name:'BWS 125cc',         cc:'125cc',     spec:'CVT · Carb · Wide Tyre',       img:'photos/bws.png' },
-  { id:'cygnus-2',     brand:'Yamaha', name:'Cygnus 2 125cc',    cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus.png' },
-  { id:'cygnus-3',     brand:'Yamaha', name:'Cygnus 3 125cc',    cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus-3.jpg' },
-  { id:'cygnus-4',     brand:'Yamaha', name:'Cygnus 4 125cc',    cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus-4.jpg' },
-  { id:'cygnus-5',     brand:'Yamaha', name:'Cygnus 5 125cc',    cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus-5.jpg' },
-  { id:'cygnus-6',     brand:'Yamaha', name:'Cygnus 6 125cc',    cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus-6.jpg' },
-  { id:'gtr',          brand:'Yamaha', name:'GTR 125cc',         cc:'125cc',     spec:'CVT · FI · Sport Style',       img:'photos/yamaha-gtr.jpg' },
-  { id:'gtr-aero',     brand:'Yamaha', name:'GTR Aero 125cc',    cc:'125cc',     spec:'CVT · FI · Full Fairing',      img:'photos/gtr-aero.jpg' },
-  { id:'force',        brand:'Yamaha', name:'Force 155cc',       cc:'155cc',     spec:'CVT · FI · VVA · Sport',       img:'photos/yamaha-force.jpg' },
-  { id:'smax',         brand:'Yamaha', name:'S MAX 155cc',       cc:'155cc',     spec:'CVT · FI · Maxi-Scooter',      img:'photos/yamaha-smax.jpg' },
+  { id:'breeze',       brand:'Yamaha', name:'Breeze 100cc',      cc:'100cc',     spec:'CVT · Carb · Step-through',    img:'photos/yamaha-breeze.jpg',       category:'moto' },
+  { id:'jog-sweet',    brand:'Yamaha', name:'Jog Sweet 100cc',   cc:'100cc',     spec:'CVT · Carb · Step-through',    img:'photos/yamaha-jog-sweet.jpg',    category:'moto' },
+  { id:'super-four',   brand:'Yamaha', name:'Super Four 100cc',  cc:'100cc',     spec:'CVT · Carb · Step-through',    img:'photos/yamaha-super-four.jpg',   category:'moto' },
+  { id:'vino',         brand:'Yamaha', name:'Vino 50cc',         cc:'50cc',      spec:'CVT · Carb · Retro Style',     img:'photos/yamaha-vino.jpg',         category:'moto' },
+  { id:'cuxi',         brand:'Yamaha', name:'Cuxi 100cc',        cc:'100cc',     spec:'CVT · Carb · Retro Style',     img:'photos/yamaha-cuxi.jpg',         category:'moto' },
+  { id:'rsz',          brand:'Yamaha', name:'RSZ 115cc',         cc:'115cc',     spec:'CVT · Carb',                   img:'photos/rsz.jpg',                 category:'moto' },
+  { id:'rs',           brand:'Yamaha', name:'RS 115cc',          cc:'115cc',     spec:'CVT · Carb · Sport Style',     img:'photos/yamaha-rs.jpg',           category:'moto' },
+  { id:'bws',          brand:'Yamaha', name:'BWS 125cc',         cc:'125cc',     spec:'CVT · Carb · Wide Tyre',       img:'photos/bws.png',                 category:'moto' },
+  { id:'cygnus-2',     brand:'Yamaha', name:'Cygnus 2 125cc',    cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus.png',              category:'moto' },
+  { id:'cygnus-3',     brand:'Yamaha', name:'Cygnus 3 125cc',    cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus-3.jpg',            category:'moto' },
+  { id:'cygnus-4',     brand:'Yamaha', name:'Cygnus 4 125cc',    cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus-4.jpg',            category:'moto' },
+  { id:'cygnus-5',     brand:'Yamaha', name:'Cygnus 5 125cc',    cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus-5.jpg',            category:'moto' },
+  { id:'cygnus-6',     brand:'Yamaha', name:'Cygnus 6 125cc',    cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus-6.jpg',            category:'moto' },
+  { id:'gtr',          brand:'Yamaha', name:'GTR 125cc',         cc:'125cc',     spec:'CVT · FI · Sport Style',       img:'photos/yamaha-gtr.jpg',          category:'moto' },
+  { id:'gtr-aero',     brand:'Yamaha', name:'GTR Aero 125cc',    cc:'125cc',     spec:'CVT · FI · Full Fairing',      img:'photos/gtr-aero.jpg',            category:'moto' },
+  { id:'force',        brand:'Yamaha', name:'Force 155cc',       cc:'155cc',     spec:'CVT · FI · VVA · Sport',       img:'photos/yamaha-force.jpg',        category:'moto' },
+  { id:'smax',         brand:'Yamaha', name:'S MAX 155cc',       cc:'155cc',     spec:'CVT · FI · Maxi-Scooter',      img:'photos/yamaha-smax.jpg',         category:'moto' },
   // KYMCO (15)
-  { id:'racing-150',   brand:'KYMCO',  name:'Racing 150',        cc:'150cc',     spec:'CVT · FI · 4-stroke',          img:'photos/racing-150.jpg' },
-  { id:'g4',           brand:'KYMCO',  name:'G4 125cc',          cc:'125cc',     spec:'CVT · EFI · Step-through',     img:'photos/kymco-g4.png' },
-  { id:'g5',           brand:'KYMCO',  name:'G5 125cc',          cc:'125cc',     spec:'CVT · EFI · Disc Brake',       img:'photos/g5.png' },
-  { id:'g6',           brand:'KYMCO',  name:'G6 125cc / 150cc',  cc:'125/150cc', spec:'CVT · EFI · VVCS · Full LED',  img:'photos/g6.jpg' },
-  { id:'gp',           brand:'KYMCO',  name:'GP 125cc',          cc:'125cc',     spec:'CVT · Carb/EFI',               img:'photos/gp.jpg' },
-  { id:'gp2',          brand:'KYMCO',  name:'GP2 125cc',         cc:'125cc',     spec:'CVT · EFI · Front Disc',       img:'photos/gp2.png' },
-  { id:'many',         brand:'KYMCO',  name:'Many 125cc',        cc:'125cc',     spec:'CVT · EFI · Retro Style',      img:'photos/many.jpg' },
-  { id:'megafi',       brand:'KYMCO',  name:'Megafi 125cc',      cc:'125cc',     spec:'CVT · EFI · Step-through',     img:'photos/megafi.jpg' },
-  { id:'new-many',     brand:'KYMCO',  name:'New Many 110cc',    cc:'110cc',     spec:'CVT · EFI · Step-through',     img:'photos/new-many.jpg' },
-  { id:'racing-s',     brand:'KYMCO',  name:'Racing S 150cc',    cc:'150cc',     spec:'CVT · EFI · Sport Fairing',    img:'photos/racing-s.jpg' },
-  { id:'racing-king',  brand:'KYMCO',  name:'Racing King 180cc', cc:'180cc',     spec:'CVT · EFI · Full Fairing',     img:'photos/kymco-racing-king.jpg' },
-  { id:'v2',           brand:'KYMCO',  name:'V2 125cc',          cc:'125cc',     spec:'CVT · Carb',                   img:'photos/v2.jpg' },
-  { id:'vjr',          brand:'KYMCO',  name:'VJR 125cc',         cc:'125cc',     spec:'CVT · Carb · Step-through',    img:'photos/vjr.png' },
-  { id:'jr',           brand:'KYMCO',  name:'JR 125cc',          cc:'125cc',     spec:'CVT · Carb · Lightweight',     img:'photos/jr.jpg' },
-  { id:'ktr',          brand:'KYMCO',  name:'KTR 150cc',         cc:'150cc',     spec:'Manual · Carb · Retro Classic',img:'photos/kymco-ktr.jpg' },
+  { id:'racing-150',   brand:'KYMCO',  name:'Racing 150',        cc:'150cc',     spec:'CVT · FI · 4-stroke',          img:'photos/racing-150.jpg',          category:'moto' },
+  { id:'g4',           brand:'KYMCO',  name:'G4 125cc',          cc:'125cc',     spec:'CVT · EFI · Step-through',     img:'photos/kymco-g4.png',            category:'moto' },
+  { id:'g5',           brand:'KYMCO',  name:'G5 125cc',          cc:'125cc',     spec:'CVT · EFI · Disc Brake',       img:'photos/g5.png',                  category:'moto' },
+  { id:'g6',           brand:'KYMCO',  name:'G6 125cc / 150cc',  cc:'125/150cc', spec:'CVT · EFI · VVCS · Full LED',  img:'photos/g6.jpg',                  category:'moto' },
+  { id:'gp',           brand:'KYMCO',  name:'GP 125cc',          cc:'125cc',     spec:'CVT · Carb/EFI',               img:'photos/gp.jpg',                  category:'moto' },
+  { id:'gp2',          brand:'KYMCO',  name:'GP2 125cc',         cc:'125cc',     spec:'CVT · EFI · Front Disc',       img:'photos/gp2.png',                 category:'moto' },
+  { id:'many',         brand:'KYMCO',  name:'Many 125cc',        cc:'125cc',     spec:'CVT · EFI · Retro Style',      img:'photos/many.jpg',                category:'moto' },
+  { id:'megafi',       brand:'KYMCO',  name:'Megafi 125cc',      cc:'125cc',     spec:'CVT · EFI · Step-through',     img:'photos/megafi.jpg',              category:'moto' },
+  { id:'new-many',     brand:'KYMCO',  name:'New Many 110cc',    cc:'110cc',     spec:'CVT · EFI · Step-through',     img:'photos/new-many.jpg',            category:'moto' },
+  { id:'racing-s',     brand:'KYMCO',  name:'Racing S 150cc',    cc:'150cc',     spec:'CVT · EFI · Sport Fairing',    img:'photos/racing-s.jpg',            category:'moto' },
+  { id:'racing-king',  brand:'KYMCO',  name:'Racing King 180cc', cc:'180cc',     spec:'CVT · EFI · Full Fairing',     img:'photos/kymco-racing-king.jpg',   category:'moto' },
+  { id:'v2',           brand:'KYMCO',  name:'V2 125cc',          cc:'125cc',     spec:'CVT · Carb',                   img:'photos/v2.jpg',                  category:'moto' },
+  { id:'vjr',          brand:'KYMCO',  name:'VJR 125cc',         cc:'125cc',     spec:'CVT · Carb · Step-through',    img:'photos/vjr.png',                 category:'moto' },
+  { id:'jr',           brand:'KYMCO',  name:'JR 125cc',          cc:'125cc',     spec:'CVT · Carb · Lightweight',     img:'photos/jr.jpg',                  category:'moto' },
+  { id:'ktr',          brand:'KYMCO',  name:'KTR 150cc',         cc:'150cc',     spec:'Manual · Carb · Retro Classic',img:'photos/kymco-ktr.jpg',           category:'moto' },
   // SYM (6)
-  { id:'sym-fighter',  brand:'SYM',    name:'Fighter 125cc',     cc:'125cc',     spec:'CVT · Carb · Naked Sport',     img:'photos/fighter-125.png' },
-  { id:'sym-gt125',    brand:'SYM',    name:'GT 125cc',          cc:'125cc',     spec:'CVT · EFI',                    img:'photos/gt125.png' },
-  { id:'sym-gt150',    brand:'SYM',    name:'GT 150cc',          cc:'150cc',     spec:'CVT · EFI · Sport Style',      img:'photos/gt150.jpg' },
-  { id:'sym-xpro',     brand:'SYM',    name:'XPRO 110cc',        cc:'110cc',     spec:'CVT · Carb · Step-through',    img:'photos/sym-xpro.png' },
-  { id:'sym-duke',     brand:'SYM',    name:'Duke 125cc',        cc:'125cc',     spec:'CVT · EFI · Sport Fairing',    img:'photos/sym-duke.jpg' },
-  { id:'sym-rx110',    brand:'SYM',    name:'RX 110cc',          cc:'110cc',     spec:'CVT · Carb · Lightweight',     img:'photos/sym-rx110.jpg' },
+  { id:'sym-fighter',  brand:'SYM',    name:'Fighter 125cc',     cc:'125cc',     spec:'CVT · Carb · Naked Sport',     img:'photos/fighter-125.png',         category:'moto' },
+  { id:'sym-gt125',    brand:'SYM',    name:'GT 125cc',          cc:'125cc',     spec:'CVT · EFI',                    img:'photos/gt125.png',               category:'moto' },
+  { id:'sym-gt150',    brand:'SYM',    name:'GT 150cc',          cc:'150cc',     spec:'CVT · EFI · Sport Style',      img:'photos/gt150.jpg',               category:'moto' },
+  { id:'sym-xpro',     brand:'SYM',    name:'XPRO 110cc',        cc:'110cc',     spec:'CVT · Carb · Step-through',    img:'photos/sym-xpro.png',            category:'moto' },
+  { id:'sym-duke',     brand:'SYM',    name:'Duke 125cc',        cc:'125cc',     spec:'CVT · EFI · Sport Fairing',    img:'photos/sym-duke.jpg',            category:'moto' },
+  { id:'sym-rx110',    brand:'SYM',    name:'RX 110cc',          cc:'110cc',     spec:'CVT · Carb · Lightweight',     img:'photos/sym-rx110.jpg',           category:'moto' },
   // AEON (1)
-  { id:'aeon-coin',    brand:'AEON',   name:'Coin 50cc',         cc:'50cc',      spec:'CVT · Carb · Retro Style',     img:'photos/aeon-coin.jpg' },
+  { id:'aeon-coin',    brand:'AEON',   name:'Coin 50cc',         cc:'50cc',      spec:'CVT · Carb · Retro Style',     img:'photos/aeon-coin.jpg',           category:'moto' },
   // PGO (2)
-  { id:'pgo-tigra',    brand:'PGO',    name:'Tigra 150cc',       cc:'150cc',     spec:'CVT · Carb · Sport Style',     img:'photos/pgo-tigra.jpg' },
-  { id:'pgo-jbubu',    brand:'PGO',    name:'JBUBU 125cc',       cc:'125cc',     spec:'CVT · Carb · Retro Style',     img:'photos/pgo-jbubu.jpg' },
+  { id:'pgo-tigra',    brand:'PGO',    name:'Tigra 150cc',       cc:'150cc',     spec:'CVT · Carb · Sport Style',     img:'photos/pgo-tigra.jpg',           category:'moto' },
+  { id:'pgo-jbubu',    brand:'PGO',    name:'JBUBU 125cc',       cc:'125cc',     spec:'CVT · Carb · Retro Style',     img:'photos/pgo-jbubu.jpg',           category:'moto' },
+
+  // Hyundai (3)
+  { id:'hyundai-santa-fe', brand:'Hyundai', name:'Santa Fe',  cc:'SUV',       spec:'Used · Pre-shipment Inspected', img:'photos/hyundai-santa-fe.jpg',    category:'car' },
+  { id:'hyundai-i30',      brand:'Hyundai', name:'i30',       cc:'Hatchback', spec:'Used · Pre-shipment Inspected', img:'photos/hyundai-i30.jpg',         category:'car' },
+  { id:'hyundai-matrix',   brand:'Hyundai', name:'Matrix',    cc:'MPV',       spec:'Used · Pre-shipment Inspected', img:'photos/hyundai-matrix.jpg',      category:'car' },
+  // Nissan (1)
+  { id:'nissan-tiida',     brand:'Nissan',  name:'Tiida',     cc:'Sedan/Hatchback', spec:'Used · Pre-shipment Inspected', img:'photos/nissan-tiida.jpg',  category:'car' },
+  // Suzuki (1)
+  { id:'suzuki-carry',     brand:'Suzuki',  name:'Carry',     cc:'Pickup Truck', spec:'Used · Pre-shipment Inspected', img:'photos/suzuki-carry.jpg',    category:'car' },
+  // Toyota (5)
+  { id:'toyota-corolla',   brand:'Toyota',  name:'Corolla Altis', cc:'Sedan',  spec:'Used · Pre-shipment Inspected', img:'photos/toyota-corolla-altis.jpg', category:'car' },
+  { id:'toyota-camry',     brand:'Toyota',  name:'Camry',     cc:'Sedan',     spec:'Used · Pre-shipment Inspected', img:'photos/toyota-camry.jpg',        category:'car' },
+  { id:'toyota-vios',      brand:'Toyota',  name:'Vios',      cc:'Sedan',     spec:'Used · Pre-shipment Inspected', img:'photos/toyota-vios.jpg',         category:'car' },
+  { id:'toyota-wish',      brand:'Toyota',  name:'Wish',      cc:'MPV',       spec:'Used · Pre-shipment Inspected', img:'photos/toyota-wish.jpg',         category:'car' },
+  { id:'toyota-yaris',     brand:'Toyota',  name:'Yaris',     cc:'Hatchback', spec:'Used · Pre-shipment Inspected', img:'photos/toyota-yaris.jpg',        category:'car' },
 ];
 
+const BRAND_CONFIG = {
+  moto: [
+    { label:'All', value:'all', count:41 },
+    { label:'Yamaha', value:'Yamaha', count:17 },
+    { label:'KYMCO', value:'KYMCO', count:15 },
+    { label:'SYM', value:'SYM', count:6 },
+    { label:'AEON', value:'AEON', count:1 },
+    { label:'PGO', value:'PGO', count:2 },
+  ],
+  car: [
+    { label:'All', value:'all', count:10 },
+    { label:'Hyundai', value:'Hyundai', count:3 },
+    { label:'Nissan', value:'Nissan', count:1 },
+    { label:'Suzuki', value:'Suzuki', count:1 },
+    { label:'Toyota', value:'Toyota', count:5 },
+  ],
+};
+const INQUIRY_MIN = { moto:50, car:5 };
+
 let cart = {};
+let currentCategory = 'moto';
 let currentFilter = 'all';
 
-function placeholder() {
-  return `<div class="product-placeholder">${MOTO_ICON}<span>PHOTO COMING SOON</span></div>`;
+function placeholder(category) {
+  const icon = category === 'car' ? CAR_ICON : MOTO_ICON;
+  return `<div class="product-placeholder">${icon}<span>PHOTO COMING SOON</span></div>`;
+}
+
+function renderFilterBar() {
+  const bar = document.getElementById('filter-bar');
+  bar.innerHTML = BRAND_CONFIG[currentCategory].map((b, i) => `
+    <button class="filter-btn${i === 0 ? ' active' : ''}" onclick="filterBrand('${b.value}', this)">${b.label} (${b.count})</button>
+  `).join('');
+}
+
+function selectCategory(category, el) {
+  currentCategory = category;
+  currentFilter = 'all';
+  document.querySelectorAll('#category-bar .filter-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  renderFilterBar();
+  renderGrid();
 }
 
 function renderGrid() {
   const grid = document.getElementById('catalog-grid');
-  const items = currentFilter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.brand === currentFilter);
+  const byCategory = PRODUCTS.filter(p => p.category === currentCategory);
+  const items = currentFilter === 'all' ? byCategory : byCategory.filter(p => p.brand === currentFilter);
   grid.innerHTML = items.map(p => `
     <div class="product-card">
       ${p.img
-        ? `<img class="product-img" src="${p.img}" alt="${p.brand} ${p.name}" loading="lazy" onerror="this.outerHTML='${placeholder().replace(/"/g,"'")}'">`
-        : placeholder()}
+        ? `<img class="product-img" src="${p.img}" alt="${p.brand} ${p.name}" loading="lazy" onerror="this.outerHTML='${placeholder(p.category).replace(/"/g,"'")}'">`
+        : placeholder(p.category)}
       <div class="product-body">
         <div class="product-brand">${p.brand}</div>
         <div class="product-name">${p.name}</div>
@@ -363,7 +421,7 @@ function renderGrid() {
 
 function filterBrand(brand, el) {
   currentFilter = brand;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('#filter-bar .filter-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
   renderGrid();
 }
@@ -407,7 +465,7 @@ function removeFromCart(id) {
 }
 
 function cartHTML(items) {
-  if (!items.length) return '<div class="cart-empty">No items yet.<br>Add motorcycles above.</div>';
+  if (!items.length) return '<div class="cart-empty">No items yet.<br>Add motorcycles or cars above.</div>';
   return items.map(i => `
     <div class="cart-item">
       <div>
@@ -437,11 +495,13 @@ function renderCart() {
   document.getElementById('drawer-body').innerHTML = cartHTML(items);
   document.getElementById('drawer-total').innerHTML = items.length ? `Total: <strong>${total}</strong> units` : '';
 
-  updateWA(total, items);
+  updateWA(items);
 }
 
-function updateWA(total, items) {
-  const ready = total >= INQUIRY_MIN;
+function updateWA(items) {
+  const motoTotal = items.filter(i => i.product.category === 'moto').reduce((s,i) => s + i.qty, 0);
+  const carTotal  = items.filter(i => i.product.category === 'car').reduce((s,i) => s + i.qty, 0);
+  const ready = motoTotal >= INQUIRY_MIN.moto || carTotal >= INQUIRY_MIN.car;
   const noteD = document.getElementById('moq-note');
   const noteM = document.getElementById('moq-note-mobile');
   const btnD  = document.getElementById('wa-btn');
@@ -449,20 +509,21 @@ function updateWA(total, items) {
 
   if (!items.length) {
     [btnD, btnM].forEach(b => { b.classList.add('wa-btn-disabled'); b.href='#'; b.onclick=()=>false; });
-    [noteD, noteM].forEach(n => { n.textContent='Add 50+ units to send inquiry'; n.className='moq-note'; });
+    [noteD, noteM].forEach(n => { n.textContent=`Add units to send inquiry (min ${INQUIRY_MIN.moto} motorcycles or ${INQUIRY_MIN.car} cars)`; n.className='moq-note'; });
     return;
   }
 
+  const total = motoTotal + carTotal;
   const lines = items.map(i => `- ${i.product.brand} ${i.product.name}: ${i.qty} units`).join('%0A');
-  const msg = `Hello Luckwell!%0A%0AI'd like to inquire about:%0A%0A${lines}%0A%0ATotal: ${total} units%0A%0APlease send me the current stock list and quotation. Thank you!`;
+  const msg = `Hello Luckwell!%0A%0AI'd like to inquire about:%0A%0A${lines}%0A%0ATotal: ${motoTotal} motorcycle units, ${carTotal} car units%0A%0APlease send me the current stock list and quotation. Thank you!`;
   const url  = `https://wa.me/${WA}?text=${msg}`;
 
   if (ready) {
     [btnD, btnM].forEach(b => { b.classList.remove('wa-btn-disabled'); b.href=url; b.setAttribute('target','_blank'); b.onclick=null; });
-    [noteD, noteM].forEach(n => { n.textContent=`✓ ${total} units — tap to send inquiry!`; n.className='moq-note ok'; });
+    [noteD, noteM].forEach(n => { n.textContent=`✓ ${motoTotal} motorcycle units, ${carTotal} car units — tap to send inquiry!`; n.className='moq-note ok'; });
   } else {
     [btnD, btnM].forEach(b => { b.classList.add('wa-btn-disabled'); b.href='#'; b.onclick=()=>false; });
-    [noteD, noteM].forEach(n => { n.textContent=`Need ${INQUIRY_MIN - total} more units to unlock (min ${INQUIRY_MIN})`; n.className='moq-note warn'; });
+    [noteD, noteM].forEach(n => { n.textContent=`Motorcycles: ${motoTotal}/${INQUIRY_MIN.moto} · Cars: ${carTotal}/${INQUIRY_MIN.car} — reach either minimum to unlock`; n.className='moq-note warn'; });
   }
 }
 
@@ -474,6 +535,7 @@ function scrollToCart() {
 function openDrawer()  { document.getElementById('cart-drawer').style.display='block'; }
 function closeDrawer() { document.getElementById('cart-drawer').style.display='none'; }
 
+renderFilterBar();
 renderGrid();
 renderCart();
 </script>
