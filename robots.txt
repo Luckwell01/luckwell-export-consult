@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://luckwell01.github.io/luckwell-export-consult/sitemap.xml
