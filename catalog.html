@@ -31,6 +31,21 @@
   ]
 }
   </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Luckwell reference FOB prices (Kaohsiung)",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "item": { "@type": "Product", "name": "Yamaha Cygnus 2 125cc (used)", "offers": { "@type": "Offer", "price": "290", "priceCurrency": "USD", "description": "Indicative FOB Kaohsiung reference price per unit; final quotation sent with current stock list" } } },
+    { "@type": "ListItem", "position": 2, "item": { "@type": "Product", "name": "KYMCO Racing 150 (used)", "offers": { "@type": "Offer", "price": "245", "priceCurrency": "USD", "description": "Indicative FOB Kaohsiung reference price per unit; final quotation sent with current stock list" } } },
+    { "@type": "ListItem", "position": 3, "item": { "@type": "Product", "name": "KYMCO G5 (used)", "offers": { "@type": "Offer", "price": "225", "priceCurrency": "USD", "description": "Indicative FOB Kaohsiung reference price per unit; final quotation sent with current stock list" } } },
+    { "@type": "ListItem", "position": 4, "item": { "@type": "Product", "name": "SYM GT 125cc (used)", "offers": { "@type": "Offer", "price": "220", "priceCurrency": "USD", "description": "Indicative FOB Kaohsiung reference price per unit; final quotation sent with current stock list" } } },
+    { "@type": "ListItem", "position": 5, "item": { "@type": "Product", "name": "KYMCO GP 125cc (used)", "offers": { "@type": "Offer", "price": "215", "priceCurrency": "USD", "description": "Indicative FOB Kaohsiung reference price per unit; final quotation sent with current stock list" } } },
+    { "@type": "ListItem", "position": 6, "item": { "@type": "Product", "name": "Toyota Vios (used)", "offers": { "@type": "Offer", "price": "1880", "priceCurrency": "USD", "description": "Indicative FOB Kaohsiung reference price per unit; final quotation sent with current stock list" } } }
+  ]
+}
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -127,6 +142,7 @@
     }
     .product-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
     .product-spec { font-size: 0.76rem; color: var(--gray-text); margin-bottom: 12px; }
+    .product-price { font-size: 0.8rem; font-weight: 600; color: var(--orange); margin: -6px 0 12px; }
 
     /* QTY */
     .qty-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
@@ -239,7 +255,7 @@
   <h1>Motorcycle &amp; Car Catalog</h1>
   <p>Select models and quantities, then send a WhatsApp inquiry</p>
   <span class="tag">Export Only · Kaohsiung, Taiwan · MOQ 50 units/20FT or 125 units/40HQ (Motorcycles) · MOQ 5 units/40HQ (Cars)</span>
-  <span class="tag">Indicative FOB Kaohsiung · Motorcycles US$185–900/unit · Cars US$1,980–4,680/unit · depends on model, year and grade</span>
+  <span class="tag">Indicative FOB Kaohsiung · Motorcycles US$185–900/unit · Cars US$1,880–4,680/unit · depends on model, year and grade</span>
 </div>
 
 <div class="filter-bar" id="category-bar">
@@ -323,7 +339,7 @@ const PRODUCTS = [
   { id:'rsz',          brand:'Yamaha', name:'RSZ 115cc',         cc:'115cc',     spec:'CVT · Carb',                   img:'photos/rsz.jpg',                 category:'moto' },
   { id:'rs',           brand:'Yamaha', name:'RS 115cc',          cc:'115cc',     spec:'CVT · Carb · Sport Style',     img:'photos/yamaha-rs.jpg',           category:'moto' },
   { id:'bws',          brand:'Yamaha', name:'BWS 125cc',         cc:'125cc',     spec:'CVT · Carb · Wide Tyre',       img:'photos/bws.png',                 category:'moto' },
-  { id:'cygnus-2',     brand:'Yamaha', name:'Cygnus 2 125cc',    cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus.png',              category:'moto' },
+  { id:'cygnus-2',     brand:'Yamaha', name:'Cygnus 2 125cc',    cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus.png',              category:'moto', price:290 },
   { id:'cygnus-3',     brand:'Yamaha', name:'Cygnus 3 125cc',    cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus-3.jpg',            category:'moto' },
   { id:'cygnus-4',     brand:'Yamaha', name:'Cygnus 4 125cc',    cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus-4.jpg',            category:'moto' },
   { id:'cygnus-5',     brand:'Yamaha', name:'Cygnus 5 125cc',    cc:'125cc',     spec:'CVT · FI · Disc Brake',        img:'photos/cygnus-5.jpg',            category:'moto' },
@@ -333,11 +349,11 @@ const PRODUCTS = [
   { id:'force',        brand:'Yamaha', name:'Force 155cc',       cc:'155cc',     spec:'CVT · FI · VVA · Sport',       img:'photos/yamaha-force.jpg',        category:'moto' },
   { id:'smax',         brand:'Yamaha', name:'S MAX 155cc',       cc:'155cc',     spec:'CVT · FI · Maxi-Scooter',      img:'photos/yamaha-smax.jpg',         category:'moto' },
   // KYMCO (15)
-  { id:'racing-150',   brand:'KYMCO',  name:'Racing 150',        cc:'150cc',     spec:'CVT · FI · 4-stroke',          img:'photos/racing-150.jpg',          category:'moto' },
+  { id:'racing-150',   brand:'KYMCO',  name:'Racing 150',        cc:'150cc',     spec:'CVT · FI · 4-stroke',          img:'photos/racing-150.jpg',          category:'moto', price:245 },
   { id:'g4',           brand:'KYMCO',  name:'G4 125cc',          cc:'125cc',     spec:'CVT · EFI · Step-through',     img:'photos/kymco-g4.png',            category:'moto' },
-  { id:'g5',           brand:'KYMCO',  name:'G5 125cc / 150cc',  cc:'125/150cc', spec:'CVT · EFI · Disc Brake',       img:'photos/g5.png',                  category:'moto' },
+  { id:'g5',           brand:'KYMCO',  name:'G5 125cc / 150cc',  cc:'125/150cc', spec:'CVT · EFI · Disc Brake',       img:'photos/g5.png',                  category:'moto', price:225 },
   { id:'g6',           brand:'KYMCO',  name:'G6 125cc / 150cc',  cc:'125/150cc', spec:'CVT · EFI · VVCS · Full LED',  img:'photos/g6.jpg',                  category:'moto' },
-  { id:'gp',           brand:'KYMCO',  name:'GP 125cc',          cc:'125cc',     spec:'CVT · Carb/EFI',               img:'photos/gp.jpg',                  category:'moto' },
+  { id:'gp',           brand:'KYMCO',  name:'GP 125cc',          cc:'125cc',     spec:'CVT · Carb/EFI',               img:'photos/gp.jpg',                  category:'moto', price:215 },
   { id:'gp2',          brand:'KYMCO',  name:'GP2 125cc',         cc:'125cc',     spec:'CVT · EFI · Front Disc',       img:'photos/gp2.png',                 category:'moto' },
   { id:'many',         brand:'KYMCO',  name:'Many 125cc',        cc:'125cc',     spec:'CVT · EFI · Retro Style',      img:'photos/many.jpg',                category:'moto' },
   { id:'megafi',       brand:'KYMCO',  name:'Megafi 125cc',      cc:'125cc',     spec:'CVT · EFI · Step-through',     img:'photos/megafi.jpg',              category:'moto' },
@@ -350,7 +366,7 @@ const PRODUCTS = [
   { id:'ktr',          brand:'KYMCO',  name:'KTR 150cc',         cc:'150cc',     spec:'Manual · Carb · Retro Classic',img:'photos/kymco-ktr.jpg',           category:'moto' },
   // SYM (6)
   { id:'sym-fighter',  brand:'SYM',    name:'Fighter 125cc',     cc:'125cc',     spec:'CVT · Carb · Naked Sport',     img:'photos/fighter-125.png',         category:'moto' },
-  { id:'sym-gt125',    brand:'SYM',    name:'GT 125cc',          cc:'125cc',     spec:'CVT · EFI',                    img:'photos/gt125.png',               category:'moto' },
+  { id:'sym-gt125',    brand:'SYM',    name:'GT 125cc',          cc:'125cc',     spec:'CVT · EFI',                    img:'photos/gt125.png',               category:'moto', price:220 },
   { id:'sym-gt150',    brand:'SYM',    name:'GT 150cc',          cc:'150cc',     spec:'CVT · EFI · Sport Style',      img:'photos/gt150.jpg',               category:'moto' },
   { id:'sym-xpro',     brand:'SYM',    name:'XPRO 110cc',        cc:'110cc',     spec:'CVT · Carb · Step-through',    img:'photos/sym-xpro.png',            category:'moto' },
   { id:'sym-duke',     brand:'SYM',    name:'Duke 125cc',        cc:'125cc',     spec:'CVT · EFI · Sport Fairing',    img:'photos/sym-duke.jpg',            category:'moto' },
@@ -372,7 +388,7 @@ const PRODUCTS = [
   // Toyota (5)
   { id:'toyota-corolla',   brand:'Toyota',  name:'Corolla Altis', cc:'Sedan',  spec:'Used · Pre-shipment Inspected', img:'photos/toyota-corolla-altis.jpg', category:'car' },
   { id:'toyota-camry',     brand:'Toyota',  name:'Camry',     cc:'Sedan',     spec:'Used · Pre-shipment Inspected', img:'photos/toyota-camry.jpg',        category:'car' },
-  { id:'toyota-vios',      brand:'Toyota',  name:'Vios',      cc:'Sedan',     spec:'Used · Pre-shipment Inspected', img:'photos/toyota-vios.jpg',         category:'car' },
+  { id:'toyota-vios',      brand:'Toyota',  name:'Vios',      cc:'Sedan',     spec:'Used · Pre-shipment Inspected', img:'photos/toyota-vios.jpg',         category:'car', price:1880 },
   { id:'toyota-wish',      brand:'Toyota',  name:'Wish',      cc:'MPV',       spec:'Used · Pre-shipment Inspected', img:'photos/toyota-wish.jpg',         category:'car' },
   { id:'toyota-yaris',     brand:'Toyota',  name:'Yaris',     cc:'Hatchback', spec:'Used · Pre-shipment Inspected', img:'photos/toyota-yaris.jpg',        category:'car' },
 ];
@@ -451,6 +467,7 @@ function renderGrid() {
         <div class="product-brand">${p.brand}</div>
         <div class="product-name">${p.name}</div>
         <div class="product-spec">${p.cc} · ${p.spec}</div>
+        ${p.price ? `<div class="product-price">Ref. FOB from US$${p.price.toLocaleString('en-US')}</div>` : ''}
         <div class="qty-row">
           <span class="qty-label">Qty:</span>
           <div class="qty-controls">
