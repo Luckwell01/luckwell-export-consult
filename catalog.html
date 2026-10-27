@@ -395,6 +395,23 @@ const BRAND_CONFIG = {
 };
 const INQUIRY_MIN = { moto:50, car:5 };
 
+// Traffic source tag for the WhatsApp message (ChatGPT links carry utm_source=chatgpt.com)
+const SOURCE = (() => {
+  let src = '';
+  try { src = new URLSearchParams(location.search).get('utm_source') || ''; } catch (e) {}
+  if (!src && document.referrer) {
+    try {
+      const h = new URL(document.referrer).hostname.replace(/^www\./, '');
+      if (h && h !== location.hostname) src = h;
+    } catch (e) {}
+  }
+  try {
+    if (src) sessionStorage.setItem('lw_src', src);
+    else src = sessionStorage.getItem('lw_src') || '';
+  } catch (e) {}
+  return src.replace(/[^\w.\-]/g, '').slice(0, 40);
+})();
+
 let cart = {};
 let currentCategory = 'moto';
 let currentFilter = 'all';
@@ -543,7 +560,7 @@ function updateWA(items) {
 
   const total = motoTotal + carTotal;
   const lines = items.map(i => `- ${i.product.brand} ${i.product.name}: ${i.qty} units`).join('%0A');
-  const msg = `Hello Luckwell!%0A%0AI'd like to inquire about:%0A%0A${lines}%0A%0ATotal: ${motoTotal} motorcycle units, ${carTotal} car units%0A%0APlease send me the current stock list and quotation. Thank you!`;
+  const msg = `Hello Luckwell!%0A%0AI'd like to inquire about:%0A%0A${lines}%0A%0ATotal: ${motoTotal} motorcycle units, ${carTotal} car units%0A%0APlease send me the current stock list and quotation. Thank you!${SOURCE ? `%0A%0ASource: ${SOURCE}` : ''}`;
   const url  = `https://wa.me/${WA}?text=${msg}`;
 
   if (ready) {
