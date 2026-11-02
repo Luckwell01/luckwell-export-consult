@@ -216,6 +216,15 @@
       font-weight: 700; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.25);
       z-index: 200; align-items: center; gap: 8px;
     }
+    .wa-ask { display: block; text-align: center; margin-top: 8px; font-size: 0.8rem; color: #128c7e; text-decoration: underline; }
+    .wa-fab {
+      display: none; position: fixed; bottom: 24px; left: 16px; z-index: 200;
+      background: #25d366; color: #fff; border-radius: 50px; padding: 13px 18px;
+      font-size: 0.9rem; font-weight: 700; text-decoration: none; align-items: center; gap: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    }
+    .wa-fab svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .hero-bar .hero-summary { max-width: 760px; margin: 14px auto 0; font-size: 0.92rem; line-height: 1.6; color: rgba(255,255,255,0.85); }
     .cart-drawer {
       display: none; position: fixed; bottom: 0; left: 0; right: 0;
       background: var(--white); border-radius: 16px 16px 0 0;
@@ -228,6 +237,7 @@
       .catalog-wrapper { flex-direction: column; }
       .cart-sidebar { display: none; }
       .cart-float { display: flex; }
+      .wa-fab { display: flex; }
       .nav-links { display: none; }
     }
     @media (max-width: 520px) {
@@ -256,6 +266,7 @@
   <p>Select models and quantities, then send a WhatsApp inquiry</p>
   <span class="tag">Export Only · Kaohsiung, Taiwan · MOQ 50 units/20FT or 125 units/40HQ (Motorcycles) · MOQ 5 units/40HQ (Cars)</span>
   <span class="tag">Indicative FOB Kaohsiung · Motorcycles US$185–900/unit · Cars US$1,880–4,680/unit · depends on model, year and grade</span>
+  <p class="hero-summary">Luckwell CO., LTD is a Kaohsiung, Taiwan exporter of used motorcycles (Yamaha, KYMCO, SYM, AEON, PGO) and used cars (Hyundai, Nissan, Suzuki, Toyota). Wholesale container orders only: motorcycles from 50 units per 20FT or 125 units per 40HQ, cars from 5 units per 40HQ. Quotations and the current stock list are sent by WhatsApp.</p>
 </div>
 
 <div class="filter-bar" id="category-bar">
@@ -282,6 +293,7 @@
         Send WhatsApp Inquiry
       </a>
       <p class="moq-note" id="moq-note">Add units to send inquiry</p>
+      <a class="wa-ask" id="wa-ask" href="#" target="_blank" style="display:none">Below the minimum? Ask us for a suitable mix</a>
     </div>
   </div>
 </div>
@@ -292,13 +304,15 @@
 .static-list-section{max-width:1100px;margin:40px auto;padding:0 20px;color:var(--gray-text,#444);font-size:.9rem}
 .static-list-section h2{font-size:1.3rem;margin-bottom:6px;color:var(--navy,#1A1A2E)}
 .static-list-section h3{font-size:1.05rem;margin:22px 0 8px;color:var(--navy,#1A1A2E)}
-.static-list{width:100%;border-collapse:collapse}
+.static-list-wrap{overflow-x:auto}
+.static-list{width:100%;border-collapse:collapse;min-width:560px}
 .static-list th,.static-list td{border-bottom:1px solid #e3e3e3;padding:6px 8px;text-align:left}
 .static-list th{background:#f5f5f5;font-weight:600}
 </style>
 <h2>Full model list: 41 used motorcycles and 10 used cars for export</h2>
 <p>Luckwell CO., LTD (Kaohsiung, Taiwan) exports used motorcycles and cars wholesale. Motorcycle MOQ: 50 units per 20FT container or 125 units per 40HQ container. Car MOQ: 5 units per 40HQ container. Indicative FOB Kaohsiung price: motorcycles US$185&ndash;900 per unit, cars US$1,880&ndash;4,680 per unit, depending on model, year and condition grade. Request a quotation and current stock list by WhatsApp using the inquiry list above.</p>
 <h3>Used Motorcycles (41 models)</h3>
+<div class="static-list-wrap">
 <table class="static-list">
 <thead><tr><th>Brand</th><th>Model</th><th>Engine</th><th>Specification</th><th>Popular in</th></tr></thead>
 <tbody>
@@ -345,7 +359,9 @@
 <tr><td>PGO</td><td>JBUBU 125cc</td><td>125cc</td><td>CVT · Carb · Retro Style</td><td></td></tr>
 </tbody>
 </table>
+</div>
 <h3>Used Cars (10 models)</h3>
+<div class="static-list-wrap">
 <table class="static-list">
 <thead><tr><th>Brand</th><th>Model</th><th>Body type</th><th>Specification</th><th>Popular in</th></tr></thead>
 <tbody>
@@ -361,10 +377,13 @@
 <tr><td>Toyota</td><td>Yaris</td><td>Hatchback</td><td>Used · Pre-shipment Inspected</td><td></td></tr>
 </tbody>
 </table>
+</div>
 </section>
 <!-- STATIC-LIST:END -->
 
 <!-- MOBILE FLOAT -->
+<a class="wa-fab" id="wa-fab" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>Chat on WhatsApp</a>
+
 <button class="cart-float" id="cart-float" onclick="openDrawer()">
   🛒 View Cart <span class="cart-badge" style="background:var(--navy);color:var(--orange)" id="float-badge">0</span>
 </button>
@@ -383,6 +402,7 @@
       Send WhatsApp Inquiry
     </a>
     <p class="moq-note" id="moq-note-mobile" style="text-align:center;margin-top:8px;">Add units to send inquiry</p>
+    <a class="wa-ask" id="wa-ask-mobile" href="#" target="_blank" style="display:none">Below the minimum? Ask us for a suitable mix</a>
   </div>
 </div>
 
@@ -639,7 +659,12 @@ function renderCart() {
   updateWA(items);
 }
 
+const ASK_MSG = `Hello Luckwell!%0A%0AI am interested in your used vehicles but may order below the minimum quantity. Please advise what mix and quantity would work, and send me the current stock list.${SOURCE ? `%0A%0ASource: ${SOURCE}` : ''}`;
+document.getElementById('wa-fab').href = `https://wa.me/${WA}?text=${ASK_MSG}`;
+
 function updateWA(items) {
+  const askD = document.getElementById('wa-ask');
+  const askM = document.getElementById('wa-ask-mobile');
   const motoTotal = items.filter(i => i.product.category === 'moto').reduce((s,i) => s + i.qty, 0);
   const carTotal  = items.filter(i => i.product.category === 'car').reduce((s,i) => s + i.qty, 0);
   const ready = motoTotal >= INQUIRY_MIN.moto || carTotal >= INQUIRY_MIN.car;
@@ -649,6 +674,7 @@ function updateWA(items) {
   const btnM  = document.getElementById('wa-btn-mobile');
 
   if (!items.length) {
+    [askD, askM].forEach(a => { a.style.display='none'; });
     [btnD, btnM].forEach(b => { b.classList.add('wa-btn-disabled'); b.href='#'; b.onclick=()=>false; });
     [noteD, noteM].forEach(n => { n.textContent=`Add units to send inquiry (min ${INQUIRY_MIN.moto} motorcycles or ${INQUIRY_MIN.car} cars)`; n.className='moq-note'; });
     return;
@@ -658,6 +684,10 @@ function updateWA(items) {
   const lines = items.map(i => `- ${i.product.brand} ${i.product.name}: ${i.qty} units`).join('%0A');
   const msg = `Hello Luckwell!%0A%0AI'd like to inquire about:%0A%0A${lines}%0A%0ATotal: ${motoTotal} motorcycle units, ${carTotal} car units%0A%0APlease send me the current stock list and quotation. Thank you!${SOURCE ? `%0A%0ASource: ${SOURCE}` : ''}`;
   const url  = `https://wa.me/${WA}?text=${msg}`;
+
+  const askLines = items.map(i => `- ${i.product.brand} ${i.product.name}: ${i.qty} units`).join('%0A');
+  const askUrl = `https://wa.me/${WA}?text=Hello Luckwell!%0A%0AMy selection so far is below the minimum:%0A%0A${askLines}%0A%0ATotal: ${motoTotal} motorcycle units, ${carTotal} car units%0A%0APlease advise what mix and quantity would work, and send me the current stock list.${SOURCE ? `%0A%0ASource: ${SOURCE}` : ''}`;
+  [askD, askM].forEach(a => { a.href = askUrl; a.style.display = ready ? 'none' : 'block'; });
 
   if (ready) {
     [btnD, btnM].forEach(b => { b.classList.remove('wa-btn-disabled'); b.href=url; b.setAttribute('target','_blank'); b.onclick=null; });
