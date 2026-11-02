@@ -12,10 +12,10 @@ const PRODUCTS = new Function(`return ${m[1]}`)();
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 function table(title, items) {
-  const rows = items.map(p => `<tr><td>${esc(p.brand)}</td><td>${esc(p.name)}</td><td>${esc(p.cc)}</td><td>${esc(p.spec)}</td></tr>`).join('\n');
+  const rows = items.map(p => `<tr><td>${esc(p.brand)}</td><td>${esc(p.name)}</td><td>${esc(p.cc)}</td><td>${esc(p.spec)}</td><td>${esc(p.popular || '')}</td></tr>`).join('\n');
   return `<h3>${esc(title)} (${items.length} models)</h3>
 <table class="static-list">
-<thead><tr><th>Brand</th><th>Model</th><th>${title === 'Used Cars' ? 'Body type' : 'Engine'}</th><th>Specification</th></tr></thead>
+<thead><tr><th>Brand</th><th>Model</th><th>${title === 'Used Cars' ? 'Body type' : 'Engine'}</th><th>Specification</th><th>Popular in</th></tr></thead>
 <tbody>
 ${rows}
 </tbody>
