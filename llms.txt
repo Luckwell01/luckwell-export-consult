@@ -20,6 +20,7 @@
 
 ## French
 - [Catalogue en français (French version of the catalog)](https://catalog.luckwell.com/fr/catalog.html): catalogue de motos et voitures d'occasion à l'export, MOQ, étapes de commande.
+- [Guides d'exportation (French guides index)](https://catalog.luckwell.com/fr/guides.html): MOQ, chargement des conteneurs, classification A/B/C, inspection, voitures, KYMCO et Yamaha, Afrique, Taïwan vs Japon.
 
 ## Guides
 - [Used scooter exporter Taiwan](https://catalog.luckwell.com/used-scooter-exporter-taiwan.html)

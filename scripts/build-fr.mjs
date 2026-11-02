@@ -30,13 +30,13 @@ rep('"name": "Motorcycle & Car Catalog", "item": "' + EN_URL + '"', '"name": "Ca
 
 // ---- paths (page lives in /fr/)
 rep('href="index.html', 'href="../index.html');
-rep('href="guides.html"', 'href="../guides.html"');
 rep("img:'photos/", "img:'../photos/");
 
 // ---- nav
 rep('<a href="../index.html">Home</a>', '<a href="../index.html">Accueil</a>');
 rep('<a href="../index.html#about">About</a>', '<a href="../index.html#about">À propos</a>');
-rep('<a href="../guides.html">Guides</a>', '<a href="../guides.html">Guides</a>\n    <a href="../catalog.html">English</a>');
+h = h.replace(/\n\s*<a href="fr\/catalog\.html">Français<\/a>/, '');
+rep('<a href="guides.html">Guides</a>', '<a href="guides.html">Guides</a>\n    <a href="../catalog.html">English</a>');
 rep('🛒 Cart <span', '🛒 Panier <span');
 
 // ---- hero
